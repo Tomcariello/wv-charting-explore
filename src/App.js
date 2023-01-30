@@ -14,20 +14,20 @@ const lineColors = ["#8884d8", "#82ca9d", "orange", "pink"];
 function App() {
   return (
     <div className="App">
-      <div class="chart-container recharts">
+      <div className="chart-container recharts">
         <RechartsLineChart data={data} lineColors={lineColors} />
       </div>
-      <div class="chart-container reactchartsjs2">
+      <div className="chart-container reactchartsjs2">
         <ReactChartsJS2LineChart />
       </div>
-      <div class="chart-container victory">
+      <div className="chart-container victory">
         <VictoryLineChart />
       </div>
-      <div class="chart-container visx">
+      <div className="chart-container visx">
         <VisxLineChart  data={data} lineColors={lineColors} />
       </div>
-      <div class="chart-container nivo">
-        <NivoLineChart  data={data} lineColors={lineColors} />
+      <div className="chart-container nivo" style={{width: '100%', height: '100%'}}>
+        <NivoLineChart data={data} lineColors={lineColors} />
       </div>
     </div>
   );
