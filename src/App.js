@@ -5,6 +5,7 @@ import RechartsLineChart from "./components/recharts.js";
 import ReactChartsJS2LineChart from "./components/ReactChartjs2.js";
 import VictoryLineChart from "./components/Victory.js";
 import NivoLineChart from "./components/Nivo.js";
+import VisxLineChart from "./components/Visx.js";
 import { data } from "./data/data.js";
 
 // Array of colors to be applied sequentially to each line required
@@ -22,7 +23,10 @@ function App() {
       <div class="chart-container victory">
         <VictoryLineChart />
       </div>
-      <div class="chart-container Nivo">
+      <div class="chart-container visx">
+        <VisxLineChart  data={data} lineColors={lineColors} />
+      </div>
+      <div class="chart-container nivo">
         <NivoLineChart  data={data} lineColors={lineColors} />
       </div>
     </div>
