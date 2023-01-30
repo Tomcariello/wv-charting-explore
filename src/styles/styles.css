@@ -1,0 +1,7 @@
+body {
+    background-color: rgb(248, 217, 222);
+}
+
+.chart-container {
+    max-width: 600px;
+}
