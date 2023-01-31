@@ -18,7 +18,7 @@ function App() {
         <RechartsLineChart data={data} lineColors={lineColors} />
       </div>
       <div className="chart-container reactchartsjs2">
-        <ReactChartsJS2LineChart />
+        <ReactChartsJS2LineChart data={data}/>
       </div>
       <div className="chart-container victory">
         <VictoryLineChart />

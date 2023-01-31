@@ -21,11 +21,9 @@ ChartJS.register(
   Legend
 );
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
 class ReactChartsJS2LineChart extends React.Component {
   // Specify the chart options
-  getOptions = (props) => {
+  getOptions = () => {
     return {
       responsive: true,
       plugins: {
@@ -39,31 +37,57 @@ class ReactChartsJS2LineChart extends React.Component {
     };
   };
 
-  getData = (props) => {
-    return {
-      labels,
-      datasets: [
-        {
-          label: "Dataset 1",
-          data: labels.map(() => Math.floor(Math.random() * 1000) + 1),
-          borderColor: "rgb(255, 99, 132)",
-          backgroundColor: "rgba(255, 99, 132, 0.5)",
-        },
-        {
-          label: "Dataset 2",
-          data: labels.map(() => Math.floor(Math.random() * 1000) + 1),
-          borderColor: "rgb(53, 162, 235)",
-          backgroundColor: "rgba(53, 162, 235, 0.5)",
-        },
-      ],
+  // Extract the X-axis labels from the data
+  getXAxisLabels = (props) => {
+    const { data } = this.props;
+    return data.map((dataPoint) => dataPoint.name);
+  };
+
+  // Extract the lines from the data, eliminating "name" (which indicates the X-axis label)
+  getLineTitles = (props) => {
+    const { data } = this.props;
+    const lineTitles = Object.keys(data[0]);
+    return lineTitles.filter((e) => e !== "name");
+  };
+
+  getDatasets = (props) => {
+    const { data } = this.props;
+    const xAxisLabels = this.getXAxisLabels();
+    const lineTitles = this.getLineTitles();
+    let formattedDataArr = [];
+
+    // iterate through each label & aggregate the data
+    for (let i = 0; i < lineTitles.length; i++) {
+      let thisLabel = lineTitles[i]; // google, yahoo, bing
+      let thisLabelValues = [];
+      for (let j = 0; j < data.length; j++) {
+        thisLabelValues.push(data[j][thisLabel]);
+      }
+      formattedDataArr.push({
+        label: thisLabel,
+        data: thisLabelValues,
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      });
+    }
+    return formattedDataArr;
+  };
+
+  getformattedData = (props) => {
+    const xAxisLabels = this.getXAxisLabels();
+    const formattedDataSets = this.getDatasets();
+    const formattedData = {
+      labels: xAxisLabels,
+      datasets: formattedDataSets,
     };
+    return formattedData;
   };
 
   render() {
     return (
       <>
         <h2>React-Chart-JS2</h2>
-        <Line options={this.getOptions()} data={this.getData()} />
+        <Line options={this.getOptions()} data={this.getformattedData()} />
       </>
     );
   }
