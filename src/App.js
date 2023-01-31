@@ -18,10 +18,10 @@ function App() {
         <RechartsLineChart data={data} lineColors={lineColors} />
       </div>
       <div className="chart-container reactchartsjs2">
-        <ReactChartsJS2LineChart data={data}/>
+        <ReactChartsJS2LineChart data={data} lineColors={lineColors} />
       </div>
       <div className="chart-container victory">
-        <VictoryLineChart />
+        <VictoryLineChart  data={data} lineColors={lineColors} />
       </div>
       <div className="chart-container visx">
         <VisxLineChart  data={data} lineColors={lineColors} />

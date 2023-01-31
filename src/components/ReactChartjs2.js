@@ -51,8 +51,7 @@ class ReactChartsJS2LineChart extends React.Component {
   };
 
   getDatasets = (props) => {
-    const { data } = this.props;
-    const xAxisLabels = this.getXAxisLabels();
+    const { data, lineColors } = this.props;
     const lineTitles = this.getLineTitles();
     let formattedDataArr = [];
 
@@ -60,20 +59,22 @@ class ReactChartsJS2LineChart extends React.Component {
     for (let i = 0; i < lineTitles.length; i++) {
       let thisLabel = lineTitles[i]; // google, yahoo, bing
       let thisLabelValues = [];
+      
+      // Extract each value for the current label
       for (let j = 0; j < data.length; j++) {
         thisLabelValues.push(data[j][thisLabel]);
       }
+      // Push the data for this label to the array
       formattedDataArr.push({
         label: thisLabel,
         data: thisLabelValues,
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        borderColor: lineColors[i],
       });
     }
     return formattedDataArr;
   };
 
-  getformattedData = (props) => {
+  getformattedData = () => {
     const xAxisLabels = this.getXAxisLabels();
     const formattedDataSets = this.getDatasets();
     const formattedData = {
