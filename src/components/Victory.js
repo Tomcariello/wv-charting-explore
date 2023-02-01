@@ -47,17 +47,45 @@ class VictoryLineChart extends React.Component {
     const formattedData = this.getFormattedData();
     const lineDataArray = formattedData.map((id) => {
       return id;
-      // return (
-      //   <>
-      //   <VictoryLine
-      //     data={id}
-      //     style={{ data: { stroke: "red" } }}
-      //   />
-      //   <VictoryScatter size={5} data={id} />
-      //   </>
-      // )
     })
-    return lineDataArray;
+    // const lines = lineDataArray.map(function(entry, index){
+    //   return (
+    //     <>
+    //     <VictoryLine
+    //     data={entry}
+    //     style={{ data: { stroke: "blue" } }}
+    //   />
+    //   <VictoryScatter size={5} data={entry} />
+    // </>)
+    // })
+    return (
+      <>
+      <VictoryChart>
+        <VictoryAxis
+          tickLabelComponent={<VictoryLabel angle={315} />}
+        />
+        <VictoryAxis dependentAxis />
+
+        {/* Iterate through data to dynamically create each line */}
+        {/* {lines} */}
+        <VictoryLine
+          data={lineDataArray[0]}
+          style={{ data: { stroke: "blue" } }}
+        />
+        <VictoryScatter size={5} data={lineDataArray[0]} />
+        <VictoryLine
+          data={lineDataArray[1]}
+          style={{ data: { stroke: "green" } }}
+        />
+        <VictoryScatter size={5} data={lineDataArray[1]} />
+        <VictoryLine
+          data={lineDataArray[2]}
+          style={{ data: { stroke: "orange" } }}
+        />
+        <VictoryScatter size={5} data={lineDataArray[2]} />
+      </VictoryChart>
+    </>
+    )
   }
 
   // Data object from the docs.
@@ -70,37 +98,13 @@ class VictoryLineChart extends React.Component {
   //   { x: "2020-06", y: 3.5231 },
   // ];
 
+
   render() {
     const t = this.getLineChart();
     return (
       <>
       <h2>Victory</h2>
-        <div className="App">
-          <VictoryChart>
-            <VictoryAxis
-              tickLabelComponent={<VictoryLabel angle={315} />}
-            />
-            <VictoryAxis dependentAxis />
-
-            <VictoryLine
-              data={t[0]}
-              style={{ data: { stroke: "red" } }}
-            />
-            <VictoryScatter size={5} data={t[0]} />
-
-            <VictoryLine
-              data={t[1]}
-              style={{ data: { stroke: "blue" } }}
-            />
-            <VictoryScatter size={5} data={t[1]} />
-
-            <VictoryLine
-              data={t[2]}
-              style={{ data: { stroke: "blue" } }}
-            />
-            <VictoryScatter size={5} data={t[2]} />
-          </VictoryChart>
-        </div>
+        {this.getLineChart()}
       </>
     );
   }
