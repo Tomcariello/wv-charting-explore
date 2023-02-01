@@ -1,10 +1,11 @@
-body {
-    background-color: rgb(248, 217, 222);
-}
-
 .chart-container {
     min-width: 300px;
     max-width: 600px;
     min-height: 300px;
     max-height: 600px;
+    margin-bottom: 50px;
+}
+
+.chart-container:nth-child(odd) {
+    background-color: #f6fff6;
 }

@@ -277,7 +277,7 @@ const data = [
 class NivoLineChart extends React.Component {
   render() {
     return (
-      <div style={{height: 400}}>
+      <div style={{height: 350}}>
       <h2>Nivo</h2>
     <ResponsiveLine
       data={data}

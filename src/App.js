@@ -6,6 +6,7 @@ import ReactChartsJS2LineChart from "./components/ReactChartjs2.js";
 import VictoryLineChart from "./components/Victory.js";
 import NivoLineChart from "./components/Nivo.js";
 import VisxLineChart from "./components/Visx.js";
+import HighchartsChart from "./components/Highcharts.js";
 import { data } from "./data/data.js";
 
 // Array of colors to be applied sequentially to each line required
@@ -28,6 +29,9 @@ function App() {
       </div>
       <div className="chart-container nivo" style={{width: '100%', height: '100%'}}>
         <NivoLineChart data={data} lineColors={lineColors} />
+      </div>
+      <div className="chart-container highcharts" style={{width: '100%', height: '100%'}}>
+        <HighchartsChart data={data} lineColors={lineColors} />
       </div>
     </div>
   );
