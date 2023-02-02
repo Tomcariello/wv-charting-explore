@@ -24,14 +24,14 @@ function App() {
       <div className="chart-container victory">
         <VictoryLineChart  data={data} lineColors={lineColors} />
       </div>
+      <div className="chart-container highcharts" style={{width: '100%', height: '100%'}}>
+        <HighchartsChart data={data} lineColors={lineColors} />
+      </div>
       <div className="chart-container visx">
         <VisxLineChart  data={data} lineColors={lineColors} />
       </div>
       <div className="chart-container nivo" style={{width: '100%', height: '100%'}}>
         <NivoLineChart data={data} lineColors={lineColors} />
-      </div>
-      <div className="chart-container highcharts" style={{width: '100%', height: '100%'}}>
-        <HighchartsChart data={data} lineColors={lineColors} />
       </div>
     </div>
   );

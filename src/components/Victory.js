@@ -5,6 +5,7 @@ import {
   VictoryLine,
   VictoryLabel,
   VictoryScatter,
+  VictoryTooltip
 } from "victory";
 
 class VictoryLineChart extends React.Component {
@@ -61,13 +62,6 @@ class VictoryLineChart extends React.Component {
     return (
       <>
       <VictoryChart>
-        <VictoryAxis
-          tickLabelComponent={<VictoryLabel angle={315} />}
-        />
-        <VictoryAxis dependentAxis />
-
-        {/* Iterate through data to dynamically create each line */}
-        {/* {lines} */}
         <VictoryLine
           data={lineDataArray[0]}
           style={{ data: { stroke: "blue" } }}

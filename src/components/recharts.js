@@ -1,5 +1,5 @@
 import React from "react";
-import { LineChart, Line, XAxis, YAxis, Legend } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Legend, Tooltip } from 'recharts';
 
 class RechartsLineChart extends React.Component {
     getLineChart = (props) => {
@@ -12,7 +12,7 @@ class RechartsLineChart extends React.Component {
       const chartLinesArr = dataKeys.map((id, index) => {
         return (
           <Line 
-            type='monotone'
+            type='linear'
             key={id}
             dataKey={dataKeys[index]}
             stroke={lineColors[index]}
@@ -28,6 +28,8 @@ class RechartsLineChart extends React.Component {
         <>
         <h2>Recharts</h2>
         <LineChart width={600} height={300} data={data}>
+          <Tooltip formatter={this.modifyFormatter}/>
+          <Legend />
           {this.getLineChart()}
           <XAxis dataKey='name' />
           <YAxis />
